@@ -1,6 +1,6 @@
 <?php
 
-class PageController
+class PageController extends Controller
 {
 
     public function __construct()
@@ -9,6 +9,16 @@ class PageController
     }
 
     public function index() {
-        echo "PageController#index";
+        return $this->view("page/index", [
+            "title" => "Page Index"
+        ]);
+    }
+
+    public function about() {
+        //return $this->page404();
+        return $this->view("page/about", [
+            "title" => "About us ...",
+            "content" => "<strong>The content ...</strong>"
+        ]);
     }
 }

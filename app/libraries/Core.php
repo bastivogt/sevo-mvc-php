@@ -10,7 +10,7 @@ class Core
 
     protected $controller_suffix = "Controller";
     protected $currentController = "Page";
-    protected $currentMethod = "index";
+    protected $currentMethod = "page404";
     protected $params = [];
 
 
@@ -42,6 +42,8 @@ class Core
             $this->currentController = ucwords($url[0] . $this->controller_suffix);
             unset($url[0]);
             //print_r($url);
+        }else {
+            $this->currentController = "Base" . $this->controller_suffix;
         }
 
 
@@ -57,6 +59,11 @@ class Core
             if (method_exists($this->currentController, $url[1])) {
                 $this->currentMethod = $url[1];
                 unset($url[1]);
+            }
+            
+        }else {
+            if(method_exists($this->currentController, "index")) {
+                $this->currentMethod = "index";
             }
         }
 
@@ -83,4 +90,5 @@ class Core
         }
         return false;
     }
+
 }
