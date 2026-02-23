@@ -31,7 +31,7 @@ class Core
         }
 
 
-        $file = "../app/controllers/" . ucwords($url[0]) . $this->controller_suffix . ".php";
+        $file = APP_ROOT . "/controllers/" . ucwords($url[0]) . $this->controller_suffix . ".php";
 
 
 
