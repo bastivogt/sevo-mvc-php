@@ -23,6 +23,15 @@ function esc(string $value) {
 }
 
 
+function url_to($path = "", $param = null) {
+    $url = BASE_URL . $path;
+    if(!is_null($param)) {
+        $url .= "/" . $param;
+    }
+    return $url;
+}
+
+
 
 
 
