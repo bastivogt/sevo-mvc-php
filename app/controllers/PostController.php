@@ -57,7 +57,10 @@ class PostController extends Controller
         if(!$post) {
             return $this->page404();
         }
+
         $this->postModel->updatePost($id, "Hello", "Hello, world!");
         return "UPDATED";
+
+
     }
 }
