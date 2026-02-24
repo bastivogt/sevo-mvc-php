@@ -20,5 +20,32 @@ class Post extends Model {
         return $this->db->result();
     }
 
+    public function createPost($title, $content, $published = true) {
+        $this->db->query("INSERT INTO posts (title, content, published) VALUES (:title, :content, :published)");
+        $this->db->bindValue(":title", $title);
+        $this->db->bindValue(":content", $content);
+        $this->db->bindValue(":published", $published);
+        return $this->db->execute();
+
+    }
+
+
+    public function updatePost($id, $title, $content, $published = true) {
+        $this->db->query("UPDATE posts SET title = :title, content = :content, published = :published WHERE id = :id");
+        $this->db->bindValue(":id", $id);
+        $this->db->bindValue(":title", $title);
+        $this->db->bindValue(":content", $content);
+        $this->db->bindValue(":published", $published);
+        return $this->db->execute();
+
+    }
+
+
+    public function deletePost($id) {
+        $this->db->query("DELETE FROM posts WHERE id=:id");
+        $this->db->bindValue(":id", $id);
+        return $this->db->execute();
+    }
+
     
 }
